@@ -1,0 +1,102 @@
+ {% extends 'layout.html' %} {% block body %}
+
+<style>
+    /* Style for the button */
+    
+    .weather-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0;
+        /* Set initial opacity to 0 */
+        animation: fadeIn 2s ease-in-out forwards;
+        /* Apply the fadeIn animation */
+    }
+    /* Animation keyframes */
+    
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+            /* Optional: Slide button up from 20px below */
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+            /* Optional: Slide button up to its final position */
+        }
+    }
+    /* Center align the content */
+    
+    div {
+        text-align: center;
+    }
+</style>
+
+<div align="center">
+    <h2 style="text-align: center; margin: 0px; color: black">
+        <b>If you want to know about Weather Information within last 24 hours</b>
+    </h2>
+    <br>
+    <!-- Button to fetch weather data and redirect -->
+    <button class="weather-button" onclick="redirectToWeatherPage()">
+        <span>Check Weather</span>
+    </button>
+</div>
+
+<br /><br />
+<h2 style="text-align: center; margin: 0px; color: black">
+    <b>Crop Yield Prediction</b>
+</h2>
+<br />
+
+<div style="
+    width: 350px;
+    height: auto;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 10px 10px;
+  ">
+    <form method="POST" action="{{ url_for('predict_yield') }}">
+        <div class="form-group">
+            <label for="Temperature" style="font-size: 17px"><b>Temperature (°C)</b></label>
+            <input type="number" class="form-control" id="Temperature" name="temperature" placeholder="Enter the value (e.g., 25)" style="font-weight: bold" required />
+        </div>
+        <div class="form-group">
+            <label for="Rainfall" style="font-size: 17px"><b>General Rainfall (mm)</b></label>
+            <input type="number" class="form-control" id="Rainfall" name="rainfall" placeholder="Enter the value (e.g., 100)" style="font-weight: bold" required />
+        </div>
+        <div class="form-group">
+            <label for="Humidity" style="font-size: 17px"><b>Humidity (%)</b></label>
+            <input type="number" class="form-control" id="Humidity" name="humidity" placeholder="Enter the value (e.g., 60)" style="font-weight: bold" required />
+        </div>
+        <div class="form-group">
+            <label for="Fertilizer" style="font-size: 17px"><b>Fertilizer (kg/acre)</b></label>
+            <input type="number" class="form-control" id="Fertilizer" name="fertilizer" placeholder="Enter the value (e.g., 150)" style="font-weight: bold" required />
+        </div>
+        <div class="form-group">
+            <label for="Irrigation" style="font-size: 17px"><b>Irrigation (ml/acre)</b></label>
+            <input type="number" class="form-control" id="Irrigation" name="irrigation" placeholder="Enter the value (e.g., 8000)" style="font-weight: bold" required />
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-info" style="color: black; font-weight: bold; width: 130px; height: 50px; border-radius: 12px; font-size: 21px;">
+                Predict
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function redirectToWeatherPage() {
+        // Replace 'https://example.com/weather' with the URL of the website you want to redirect to
+        window.location.href = 'https://www.meteo.gov.lk/index.php?option=com_content&view=article&id=208&Itemid=601&lang=en';
+    }
+</script>
+
+
+
+{% endblock %}
