@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { serverTimestamp } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 function ManageVideoGallery() {
   const [videos, setVideos] = useState([]);
@@ -116,6 +117,45 @@ function ManageVideoGallery() {
 
   return (
     <div>
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+        <div className="container">
+          <Link to="/admindashboard" className="navbar-brand">
+            Agronomix Administrator
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav me-auto">
+              <li className="nav-item">
+                <Link to="/manageUsers" className="nav-link">
+                  Users
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/managevideogallery" className="nav-link">
+                  Videos
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/managearticlegallery" className="nav-link">
+                  Articles
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/managemotivationalcontent" className="nav-link">
+                  Motivational Contents
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <h1 className="text-center mt-4">Manage Video Gallery</h1>
       <div className="container mt-4">
         {/* Form for adding/editing videos */}
